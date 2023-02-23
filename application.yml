@@ -1,0 +1,24 @@
+server:
+  port: 61200
+
+spring:
+  zipkin:
+    enabled: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: learnings
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.UUIDDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.learnings.event
+kafka:
+  topic:
+    user: test-topic
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+    com.backbase: DEBUG
